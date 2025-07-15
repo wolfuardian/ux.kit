@@ -1,0 +1,11 @@
+{
+  "name": "com.ux.kit",
+  "version": "0.1.0-alpha+20250715.1",
+  "displayName": "UX Kit",
+  "description": "Unity Universal Toolkit for UX",
+  "unity": "2021.3",
+  "author": {
+    "name": "Eos Wolfuardian",
+    "email": "wolfuardian@gmail.com"
+  }
+}
