@@ -1,6 +1,6 @@
 {
   "name": "com.ux.kit",
-  "version": "0.1.0-alpha+20250715.2",
+  "version": "0.1.1-alpha",
   "displayName": "UX Kit",
   "description": "Unity Universal Toolkit for UX",
   "unity": "2021.3",
