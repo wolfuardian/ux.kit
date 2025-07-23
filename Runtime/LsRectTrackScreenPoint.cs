@@ -172,7 +172,7 @@ namespace Eos.Ux.Kit
         {
             if (_shouldBeOccluded)
             {
-                var occluded = LsCameraHelper.IsOccluded(_camera, _trackTarget.position);
+                var occluded = LsCameraHelper.IsOccluded(CachedCamera, _trackTarget.position);
                 CachedCanvasGroup.alpha = occluded ? _occludedAlpha : _storedAlpha;
             }
         }
