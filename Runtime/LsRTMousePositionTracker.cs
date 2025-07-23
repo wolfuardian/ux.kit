@@ -4,7 +4,7 @@ namespace Eos.Ux.Kit
 {
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
-    public class LsRectTrackMousePosition : MonoBehaviour
+    public class LsRTMousePositionTracker : MonoBehaviour
     {
         [SerializeField] private Canvas _canvas;
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);
@@ -19,7 +19,7 @@ namespace Eos.Ux.Kit
                 return _rectTransform;
             }
         }
- 
+
         public Canvas Canvas
         {
             get

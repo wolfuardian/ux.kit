@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Eos.Ux.Kit
 {
-    public class LsMaterialOverride : MonoBehaviour
+    public class LsMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
 
