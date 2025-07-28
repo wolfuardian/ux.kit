@@ -268,7 +268,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sample - Line - LsPathFollower
+  m_Text: Sample - UxLineFollower
 --- !u!222 &181713162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269790292}
   m_Layer: 0
-  m_Name: Demo - LsLineFollower - OnPositionChanged
+  m_Name: Demo - OnPositionChanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -785,7 +785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 354466315}
   m_Layer: 5
-  m_Name: Demo - LsLineFollower - ScaleCurve
+  m_Name: Demo - ScaleCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1171,7 +1171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637951514}
   m_Layer: 5
-  m_Name: Demo - LsLineFollower - Mode
+  m_Name: Demo - Mode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2152,7 +2152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1090390740}
   m_Layer: 0
-  m_Name: Demo - LsLineFollower - ScaleCurve
+  m_Name: Demo - ScaleCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2189,7 +2189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118186498}
   m_Layer: 0
-  m_Name: Demo - LsLineFollower - Mode
+  m_Name: Demo - Mode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2684,7 +2684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1428802756}
   m_Layer: 5
-  m_Name: Demo - LsLineFollower - OnPositionChanged
+  m_Name: Demo - OnPositionChanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
