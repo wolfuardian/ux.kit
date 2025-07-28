@@ -14,7 +14,7 @@ namespace Ux.Kit
         [SerializeField] private bool _height = false;
 
         private Text _text;
-        private Text text => _text ??= GetComponent<Text>();
+        private Text cachedText => _text ??= GetComponent<Text>();
 
         private void Update()
         {
@@ -24,13 +24,13 @@ namespace Ux.Kit
         private void UpdateSize()
         {
             var target = _targetRectTransform;
-            var scale  = text.transform.localScale;
+            var scale  = cachedText.transform.localScale;
             var preferredSize = new Vector2(
                 _width
-                    ? (text.preferredWidth + _sizeOffset.x) * scale.x
+                    ? (cachedText.preferredWidth + _sizeOffset.x) * scale.x
                     : target.sizeDelta.x,
                 _height
-                    ? (text.preferredHeight + _sizeOffset.y) * scale.y
+                    ? (cachedText.preferredHeight + _sizeOffset.y) * scale.y
                     : target.sizeDelta.y
             );
             target.sizeDelta = preferredSize;
