@@ -7,18 +7,13 @@ namespace Eos.Ux.Kit
     public class LsRTScreenPointTracker : MonoBehaviour
     {
         [SerializeField] private Transform _trackTarget;
-        [SerializeField] private Canvas _canvas;
-        [SerializeField] private Camera _camera;
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);
         [SerializeField] private Vector3 _worldOffset;
         [SerializeField] private Vector2 _screenOffset;
-        [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _occludedAlpha = 0.25f;
 
         [SerializeField] private bool _snapToEdge = false;
         [SerializeField] private bool _shouldBeOccluded = false;
-
-        private RectTransform _rectTransform;
 
         private float _storedAlpha;
 
@@ -27,76 +22,33 @@ namespace Eos.Ux.Kit
         private Vector2 _screenPoint;
         private Vector2 _screenCenter;
 
-        public static Vector2 ScreenScaleRatio
-        {
-            get
-            {
-                return new Vector2(Screen.width / 1920f, Screen.height / 1080f);
-            }
-        }
+        public Vector2 ScreenScaleRatio => new Vector2(Screen.width / 1920f, Screen.height / 1080f);
 
-        public RectTransform CachedRectTransform
-        {
-            get
-            {
-                if (_rectTransform == null) _rectTransform = GetComponent<RectTransform>();
-                return _rectTransform;
-            }
-        }
+        private RectTransform _rectTransform;
+        private RectTransform CachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
 
-        public Camera CachedCamera
-        {
-            get
-            {
-                if (_camera == null) _camera = Camera.main;
-                return _camera;
-            }
-        }
+        private Camera _camera;
+        private Camera CachedCamera => _camera ??= Camera.main;
 
-        public Canvas CachedCanvas
-        {
-            get
-            {
-                if (_canvas == null) _canvas = GetComponentInParent<Canvas>();
-                return _canvas;
-            }
-        }
+        private Canvas _canvas;
+        private Canvas CachedCanvas => _canvas ??= GetComponentInParent<Canvas>();
 
-        public CanvasGroup CachedCanvasGroup
-        {
-            get
-            {
-                if (_canvasGroup == null) _canvasGroup = GetComponent<CanvasGroup>();
-                return _canvasGroup;
-            }
-        }
-
-        public Transform TrackTarget
-        {
-            get
-            {
-                if (_trackTarget == null) _trackTarget = transform;
-                return _trackTarget;
-            }
-            set
-            {
-                _trackTarget = value;
-            }
-        }
+        private CanvasGroup _canvasGroup;
+        private CanvasGroup CachedCanvasGroup => _canvasGroup ??= GetComponent<CanvasGroup>();
 
         public void SetTarget(Transform target)
         {
-            TrackTarget = target;
+            _trackTarget = target;
         }
 
         public void SetTarget(GameObject target)
         {
-            TrackTarget = target.transform;
+            _trackTarget = target.transform;
         }
 
         public void SetTarget(Vector3 target)
         {
-            TrackTarget.position = target;
+            _trackTarget.position = target;
         }
 
         public void Hide()
@@ -151,7 +103,7 @@ namespace Eos.Ux.Kit
         {
             CachedRectTransform.pivot = _pivot;
 
-            if (TrackTarget == null || CachedCamera == null)
+            if (_trackTarget == null || CachedCamera == null)
             {
                 return;
             }
@@ -179,7 +131,7 @@ namespace Eos.Ux.Kit
 
         private Vector2 GetScreenPoint()
         {
-            _track3DPos = TrackTarget.position;
+            _track3DPos = _trackTarget.position;
             _targetPos = _track3DPos + _worldOffset;
             var screenPoint = _snapToEdge ? LsCameraHelper.ClipWorldToScreenPoint(CachedCamera, _targetPos) : LsCameraHelper.WorldToScreenPoint(CachedCamera, _targetPos);
             screenPoint += _screenOffset * ScreenScaleRatio;
