@@ -3,7 +3,7 @@
 namespace Ux.Kit
 {
     [AddComponentMenu("UX/Kit/UX Rect 3D Tracker")]
-    [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
     [DisallowMultipleComponent]
     public class UxRect3DTracker : MonoBehaviour
     {
@@ -12,21 +12,16 @@ namespace Ux.Kit
         [SerializeField] private Vector3 _worldOffset;
         [SerializeField] private Vector2 _screenOffset;
         [SerializeField] private float _occludedAlpha = 0.25f;
-
         [SerializeField] private bool _snapToEdge = false;
         [SerializeField] private bool _shouldBeOccluded = false;
 
         private float _storedAlpha;
-
         private Vector3 _track3DPos;
         private Vector3 _targetPos;
         private Vector2 _screenPoint;
         private Vector2 _screenCenter;
 
         public static Vector2 screenScaleRatio => new Vector2(Screen.width / 1920f, Screen.height / 1080f);
-
-        private RectTransform _rectTransform;
-        private RectTransform cachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
 
         private Camera _camera;
         private Camera cachedCamera => _camera ??= Camera.main;
@@ -36,6 +31,9 @@ namespace Ux.Kit
 
         private CanvasGroup _canvasGroup;
         private CanvasGroup cachedCanvasGroup => _canvasGroup ??= GetComponent<CanvasGroup>();
+
+        private RectTransform _rectTransform;
+        private RectTransform cachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
 
         public void SetTarget(Transform target)
         {
@@ -78,15 +76,15 @@ namespace Ux.Kit
             {
                 return new Vector2(Screen.width / 2f, Screen.height / 2f);
             }
-            return cachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay 
-                ? cachedCanvas.pixelRect.size / 2 
+            return cachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay
+                ? cachedCanvas.pixelRect.size / 2
                 : cachedCanvas.GetComponent<RectTransform>().sizeDelta / 2;
         }
 
         private void Start()
         {
             _track3DPos = Vector3.zero;
-            Track();
+            UpdatePosition();
 
             if (cachedCanvasGroup)
             {
@@ -98,29 +96,30 @@ namespace Ux.Kit
 
         private void LateUpdate()
         {
-            Track();
+            UpdatePosition();
             Occluding();
         }
 
-        private void Track()
+        private void UpdatePosition()
         {
-            cachedRectTransform.pivot = _pivot;
-
             if (_trackTarget == null || cachedCamera == null)
             {
                 return;
             }
 
+            cachedRectTransform.pivot = _pivot;
             _screenPoint = GetScreenPoint();
             _screenCenter = GetScreenCenter();
-
             var newPosition = (_screenPoint - _screenCenter) / cachedCanvas.scaleFactor;
-
-            if (cachedRectTransform.anchoredPosition != newPosition)
+            var oldPosition = cachedRectTransform.anchoredPosition;
+            if (oldPosition != newPosition)
             {
                 cachedRectTransform.anchoredPosition = newPosition;
             }
-            cachedRectTransform.anchoredPosition = (_screenPoint - _screenCenter) / cachedCanvas.scaleFactor;
+            else
+            {
+                cachedRectTransform.anchoredPosition = (_screenPoint - _screenCenter) / cachedCanvas.scaleFactor;
+            }
         }
 
         private void Occluding()
@@ -136,8 +135,8 @@ namespace Ux.Kit
         {
             _track3DPos = _trackTarget.position;
             _targetPos = _track3DPos + _worldOffset;
-            var screenPoint = _snapToEdge 
-                ? UxCameraHelper.ClipWorldToScreenPoint(cachedCamera, _targetPos) 
+            var screenPoint = _snapToEdge
+                ? UxCameraHelper.ClipWorldToScreenPoint(cachedCamera, _targetPos)
                 : UxCameraHelper.WorldToScreenPoint(cachedCamera, _targetPos);
             screenPoint += _screenOffset * screenScaleRatio;
             return screenPoint;

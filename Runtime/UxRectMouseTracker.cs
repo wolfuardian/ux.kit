@@ -25,22 +25,20 @@ namespace Ux.Kit
 
         private void TrackMouse()
         {
-            cachedRectTransform.pivot = _pivot;
-
             if (cachedCanvas == null)
-                return;
-
-            Vector2 mousePos = Input.mousePosition;
-
-            var screenCenter = GetScreenCenter();
-
-            var offsetPos = mousePos - screenCenter + _screenOffset * screenScaleRatio;
-
-            var newAnchoredPos = offsetPos / cachedCanvas.scaleFactor;
-
-            if (cachedRectTransform.anchoredPosition != newAnchoredPos)
             {
-                cachedRectTransform.anchoredPosition = newAnchoredPos;
+                return;
+            }
+
+            cachedRectTransform.pivot = _pivot;
+            Vector2 mousePosition = Input.mousePosition;
+            var     screenCenter  = GetScreenCenter();
+            var     offset        = mousePosition - screenCenter + _screenOffset * screenScaleRatio;
+            var     newPosition   = offset / cachedCanvas.scaleFactor;
+            var     oldPosition   = cachedRectTransform.anchoredPosition;
+            if (oldPosition != newPosition)
+            {
+                cachedRectTransform.anchoredPosition = newPosition;
             }
         }
 

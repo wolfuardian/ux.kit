@@ -15,27 +15,9 @@ namespace Ux.Kit
         private readonly List<LineRendererData> _lineRendererData = new List<LineRendererData>();
         private readonly List<ImageRendererData> _imageData = new List<ImageRendererData>();
 
-        private bool HasAnyMeshRenderer
-        {
-            get
-            {
-                return _meshRendererData != null && _meshRendererData.Count > 0;
-            }
-        }
-        private bool HasAnyLineRenderer
-        {
-            get
-            {
-                return _lineRendererData != null && _lineRendererData.Count > 0;
-            }
-        }
-        private bool HasAnyImage
-        {
-            get
-            {
-                return _imageData != null && _imageData.Count > 0;
-            }
-        }
+        private bool hasAnyMeshRenderer => _meshRendererData != null && _meshRendererData.Count > 0;
+        private bool hasAnyLineRenderer => _lineRendererData != null && _lineRendererData.Count > 0;
+        private bool hasAnyImage => _imageData != null && _imageData.Count > 0;
 
         public void OverrideMaterials(bool isOverride)
         {
@@ -88,7 +70,7 @@ namespace Ux.Kit
             _lineRendererData.ForEach(data => System.Array.Fill(data._materialsInstance, _materialTarget));
             _imageData.ForEach(data => data._materialInstance = _materialTarget);
 
-            if (!HasAnyMeshRenderer && !HasAnyLineRenderer && !HasAnyImage)
+            if (!hasAnyMeshRenderer && !hasAnyLineRenderer && !hasAnyImage)
             {
                 Debug.LogWarning("AfMaterialOverride: No MeshRenderer ,LineRenderer or Image found in children. Please add at least one to use material override functionality.", this);
             }
