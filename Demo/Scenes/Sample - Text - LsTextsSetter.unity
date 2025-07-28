@@ -845,15 +845,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ff1b3169ec5b5458582e655c8cb614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textsList:
-  - _textComponent: {fileID: 2080163893}
-    _textContent: After Set Text 1
-  - _textComponent: {fileID: 1934181176}
-    _textContent: After Set Text 2
-  - _textComponent: {fileID: 285323688}
-    _textContent: After Set Text 3
-  - _textComponent: {fileID: 951079831}
-    _textContent: After Set Text 4
+  _textComponents:
+  - _target: {fileID: 2080163893}
+    content: After Set Text 1
+  - _target: {fileID: 1934181176}
+    content: After Set Text 2
+  - _target: {fileID: 285323688}
+    content: After Set Text 3
+  - _target: {fileID: 951079831}
+    content: After Set Text 4
 --- !u!1 &1934181174
 GameObject:
   m_ObjectHideFlags: 0
