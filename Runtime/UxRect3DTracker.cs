@@ -2,10 +2,10 @@
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX RT Screen Point Tracker")]
+    [AddComponentMenu("UX/Kit/UX Rect 3D Tracker")]
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
-    public class UxRTScreenPointTracker : MonoBehaviour
+    public class UxRect3DTracker : MonoBehaviour
     {
         [SerializeField] private Transform _trackTarget;
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);

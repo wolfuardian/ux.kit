@@ -2,10 +2,10 @@
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Mouse Position Tracker")]
+    [AddComponentMenu("UX/Kit/UX Rect Mouse Tracker")]
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
-    public class UxRTMousePositionTracker : MonoBehaviour
+    public class UxRectMouseTracker : MonoBehaviour
     {
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);
         [SerializeField] private Vector2 _screenOffset;
