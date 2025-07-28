@@ -250,12 +250,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trackTarget: {fileID: 961559584}
-  _canvas: {fileID: 0}
-  _camera: {fileID: 0}
   _pivot: {x: 0, y: 0}
   _worldOffset: {x: 0, y: 0, z: 0}
   _screenOffset: {x: 0, y: 0}
-  _canvasGroup: {fileID: 0}
   _occludedAlpha: 0.25
   _snapToEdge: 0
   _shouldBeOccluded: 1
@@ -570,12 +567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trackTarget: {fileID: 961559584}
-  _canvas: {fileID: 0}
-  _camera: {fileID: 0}
   _pivot: {x: 0.5, y: 1}
   _worldOffset: {x: 0, y: 0, z: 0}
   _screenOffset: {x: 0, y: 60}
-  _canvasGroup: {fileID: 0}
   _occludedAlpha: 0.25
   _snapToEdge: 0
   _shouldBeOccluded: 0
@@ -963,7 +957,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sample - RectTransform - LsRTScreenPointTracker
+  m_Text: Sample - UxRectMouseTracker
 --- !u!222 &1848074292
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -437,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30416af59fe1ca54183d10405d437099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
   _pivot: {x: 0, y: 0}
   _screenOffset: {x: 20, y: 5}
 --- !u!114 &1729252007
@@ -620,7 +619,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sample - RectTransform - LsRTMousePositionTracker
+  m_Text: Sample - UxRect3DTracker
 --- !u!222 &1848074292
 CanvasRenderer:
   m_ObjectHideFlags: 0
