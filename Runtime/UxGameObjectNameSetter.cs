@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
-    public class LsGameObjectNameSetter : MonoBehaviour
+    public class UxGameObjectNameSetter : MonoBehaviour
     {
         [SerializeField] private GameObject _targetGameObject;
         [SerializeField] private string _prefix = "Prefix_";

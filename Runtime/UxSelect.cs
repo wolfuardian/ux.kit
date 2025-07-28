@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    public class LsSelect : MonoBehaviour
+    public class UxSelect : MonoBehaviour
     {
         [SerializeField] private bool _isOn = false;
 

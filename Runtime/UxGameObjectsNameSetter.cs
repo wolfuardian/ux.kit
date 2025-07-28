@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
-    public class LsGameObjectsNameSetter : MonoBehaviour
+    public class UxGameObjectsNameSetter : MonoBehaviour
     {
         [SerializeField] private string _prefix = "Prefix_";
         [SerializeField] private string _suffix = "_Suffix";

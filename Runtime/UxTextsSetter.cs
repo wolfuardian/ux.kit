@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Ux.Kit
 {
-    public class LsTextsSetter : MonoBehaviour
+    public class UxTextsSetter : MonoBehaviour
     {
         [SerializeField] private List<TextSettings> _textsList = new List<TextSettings>();
 

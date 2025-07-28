@@ -2,7 +2,7 @@
 
 namespace Ux.Kit
 {
-    public class LsCameraController : MonoBehaviour
+    public class UxLsCameraController : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
 

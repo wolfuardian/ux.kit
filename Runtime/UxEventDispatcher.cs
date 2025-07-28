@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    public class LsEventDispatcher : MonoBehaviour
+    public class UxEventDispatcher : MonoBehaviour
     {
         [SerializeField] private string _eventID;
 

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    public class LsEventDispatcherManager : MonoBehaviour
+    public class UxEventDispatcherManager : MonoBehaviour
     {
         [SerializeField] private List<EventData> _events = new List<EventData>();
 
@@ -28,7 +28,7 @@ namespace Ux.Kit
         private void RegisterAllDispatchers()
         {
             #if UNITY_2022_1_OR_NEWER
-            var dispatchers = FindObjectsByType<LsEventDispatcher>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            var dispatchers = FindObjectsByType<UxEventDispatcher>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             #else
             var dispatchers = FindObjectsOfType<LsEventDispatcher>(true);
             #endif

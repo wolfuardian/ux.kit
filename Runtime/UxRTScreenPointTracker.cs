@@ -4,7 +4,7 @@ namespace Ux.Kit
 {
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
-    public class LsRTScreenPointTracker : MonoBehaviour
+    public class UxRTScreenPointTracker : MonoBehaviour
     {
         [SerializeField] private Transform _trackTarget;
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);

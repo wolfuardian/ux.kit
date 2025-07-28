@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
-    public class LsGameObjectSwitcherInt : MonoBehaviour
+    public class UxGameObjectSwitcherInt : MonoBehaviour
     {
         [SerializeField] private int _switchInt = 0;
         [SerializeField] private List<GameObject> _gameObjects = new List<GameObject>();

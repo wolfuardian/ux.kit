@@ -4,7 +4,7 @@ namespace Ux.Kit
 {
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
-    public class LsRTMousePositionTracker : MonoBehaviour
+    public class UxRTMousePositionTracker : MonoBehaviour
     {
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);
         [SerializeField] private Vector2 _screenOffset;

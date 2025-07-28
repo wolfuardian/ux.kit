@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    public class LsLineFollower : MonoBehaviour
+    public class UxLineFollower : MonoBehaviour
     {
         public enum MoveMode { Once, Loop, PingPong }
 

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Ux.Kit
 {
-    public class LsMaterialOverrider : MonoBehaviour
+    public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
 

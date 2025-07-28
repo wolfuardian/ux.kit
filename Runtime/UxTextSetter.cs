@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Ux.Kit
 {
-    public class LsTextSetter : MonoBehaviour
+    public class UxTextSetter : MonoBehaviour
     {
         [SerializeField] private Text _textComponent;
         [SerializeField] private string _textContent;
