@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Texts Setter")]
-    public class UxTextsSetter : MonoBehaviour
+    [AddComponentMenu("UX/Kit/UX Text Setter")]
+    public class UxTextSetter : MonoBehaviour
     {
         [SerializeField] private List<TextSettings> _textComponents = new List<TextSettings>();
 
