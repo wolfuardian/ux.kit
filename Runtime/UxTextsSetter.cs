@@ -7,43 +7,43 @@ namespace Ux.Kit
     [AddComponentMenu("UX/Kit/UX Texts Setter")]
     public class UxTextsSetter : MonoBehaviour
     {
-        [SerializeField] private List<TextSettings> _textsList = new List<TextSettings>();
+        [SerializeField] private List<TextSettings> _textComponents = new List<TextSettings>();
 
         private void Start()
         {
-            if (_textsList == null || _textsList.Count == 0)
+            if (_textComponents == null || _textComponents.Count == 0)
             {
                 Debug.LogWarning("No text settings provided. Please add TextSettings to the list.");
                 return;
             }
 
-            foreach (var textSettings in _textsList)
+            foreach (var settings in _textComponents)
             {
-                if (textSettings == null)
+                if (settings == null)
                 {
                     Debug.LogWarning("A TextSettings object is null in the list.");
                     continue;
                 }
 
-                if (textSettings._textComponent == null)
+                if (settings._target == null)
                 {
                     Debug.LogWarning("Text component is not assigned in TextSettings.");
                     continue;
                 }
 
-                textSettings.UpdateText();
+                settings.UpdateText();
             }
         }
 
         [System.Serializable]
         public class TextSettings
         {
-            public Text _textComponent;
-            public string _textContent;
+            public Text _target;
+            public string content;
 
             public void UpdateText()
             {
-                _textComponent.text = _textContent;
+                _target.text = content;
             }
         }
     }
