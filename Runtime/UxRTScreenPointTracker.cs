@@ -2,6 +2,7 @@
 
 namespace Ux.Kit
 {
+    [AddComponentMenu("UX/Kit/UX RT Screen Point Tracker")]
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
     public class UxRTScreenPointTracker : MonoBehaviour

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
+    [AddComponentMenu("UX/Kit/UX GameObjects Name Setter")]
     public class UxGameObjectsNameSetter : MonoBehaviour
     {
         [SerializeField] private string _prefix = "Prefix_";

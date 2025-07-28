@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Ux.Kit
 {
+    [AddComponentMenu("UX/Kit/UX Material Overrider")]
     public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;

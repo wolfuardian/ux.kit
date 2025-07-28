@@ -2,6 +2,7 @@
 
 namespace Ux.Kit
 {
+    [AddComponentMenu("UX/Kit/UX Mouse Position Tracker")]
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
     public class UxRTMousePositionTracker : MonoBehaviour

@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
+    [AddComponentMenu("UX/Kit/UX Event Dispatcher Manager")]
     public class UxEventDispatcherManager : MonoBehaviour
     {
         [SerializeField] private List<EventData> _events = new List<EventData>();
