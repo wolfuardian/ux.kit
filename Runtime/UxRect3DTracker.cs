@@ -78,7 +78,9 @@ namespace Ux.Kit
             {
                 return new Vector2(Screen.width / 2f, Screen.height / 2f);
             }
-            return cachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? cachedCanvas.pixelRect.size / 2 : cachedCanvas.GetComponent<RectTransform>().sizeDelta / 2;
+            return cachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay 
+                ? cachedCanvas.pixelRect.size / 2 
+                : cachedCanvas.GetComponent<RectTransform>().sizeDelta / 2;
         }
 
         private void Start()
@@ -134,7 +136,9 @@ namespace Ux.Kit
         {
             _track3DPos = _trackTarget.position;
             _targetPos = _track3DPos + _worldOffset;
-            var screenPoint = _snapToEdge ? LsCameraHelper.ClipWorldToScreenPoint(cachedCamera, _targetPos) : LsCameraHelper.WorldToScreenPoint(cachedCamera, _targetPos);
+            var screenPoint = _snapToEdge 
+                ? UxCameraHelper.ClipWorldToScreenPoint(cachedCamera, _targetPos) 
+                : UxCameraHelper.WorldToScreenPoint(cachedCamera, _targetPos);
             screenPoint += _screenOffset * screenScaleRatio;
             return screenPoint;
         }
