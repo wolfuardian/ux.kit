@@ -125,7 +125,7 @@ namespace Ux.Kit
         {
             if (_shouldBeOccluded)
             {
-                var occluded = LsCameraHelper.IsOccluded(cachedCamera, _trackTarget.position);
+                var occluded = UxCameraHelper.IsOccluded(cachedCamera, _trackTarget.position);
                 cachedCanvasGroup.alpha = occluded ? _occludedAlpha : _storedAlpha;
             }
         }

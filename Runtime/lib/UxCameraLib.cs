@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
-    public static class LsCameraHelper
+    public static class UxCameraHelper
     {
         private static readonly string[] DefaultLayers =
         {
