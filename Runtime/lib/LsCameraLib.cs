@@ -65,19 +65,19 @@ namespace Ux.Kit
 
         public static Vector2 ClipWorldToScreenPoint(Camera camera, Vector3 targetPos)
         {
-            const float CLAMP_MARGIN = 0.01f;
+            const float clampMargin = 0.01f;
 
             var viewportPoint = camera.WorldToViewportPoint(targetPos);
 
             // If the point is within the screen and far in front of the camera
-            if (viewportPoint.z > 0.01f && viewportPoint.x >= CLAMP_MARGIN && viewportPoint.x <= 1 - CLAMP_MARGIN && viewportPoint.y >= CLAMP_MARGIN && viewportPoint.y <= 1 - CLAMP_MARGIN)
+            if (viewportPoint.z > 0.01f && viewportPoint.x >= clampMargin && viewportPoint.x <= 1 - clampMargin && viewportPoint.y >= clampMargin && viewportPoint.y <= 1 - clampMargin)
             {
                 return camera.ViewportToScreenPoint(viewportPoint);
             }
 
             // If the point is outside the screen, constrain x and y to [0, 1] with a margin
-            viewportPoint.x = Mathf.Clamp(viewportPoint.x, CLAMP_MARGIN, 1 - CLAMP_MARGIN);
-            viewportPoint.y = Mathf.Clamp(viewportPoint.y, CLAMP_MARGIN, 1 - CLAMP_MARGIN);
+            viewportPoint.x = Mathf.Clamp(viewportPoint.x, clampMargin, 1 - clampMargin);
+            viewportPoint.y = Mathf.Clamp(viewportPoint.y, clampMargin, 1 - clampMargin);
 
             return camera.ViewportToScreenPoint(viewportPoint);
         }
