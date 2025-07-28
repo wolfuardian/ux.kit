@@ -10,13 +10,13 @@ namespace Ux.Kit
         [SerializeField] private Vector2 _pivot = new Vector2(0.5f, 0.5f);
         [SerializeField] private Vector2 _screenOffset;
 
-        public Vector2 ScreenScaleRatio => new Vector2(Screen.width / 1920f, Screen.height / 1080f);
+        public static Vector2 screenScaleRatio => new Vector2(Screen.width / 1920f, Screen.height / 1080f);
 
         private RectTransform _rectTransform;
-        private RectTransform CachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
+        private RectTransform cachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
 
         private Canvas _canvas;
-        private Canvas CachedCanvas => _canvas ??= GetComponentInParent<Canvas>();
+        private Canvas cachedCanvas => _canvas ??= GetComponentInParent<Canvas>();
 
         private void LateUpdate()
         {
@@ -25,32 +25,32 @@ namespace Ux.Kit
 
         private void TrackMouse()
         {
-            CachedRectTransform.pivot = _pivot;
+            cachedRectTransform.pivot = _pivot;
 
-            if (CachedCanvas == null)
+            if (cachedCanvas == null)
                 return;
 
             Vector2 mousePos = Input.mousePosition;
 
             var screenCenter = GetScreenCenter();
 
-            var offsetPos = mousePos - screenCenter + _screenOffset * ScreenScaleRatio;
+            var offsetPos = mousePos - screenCenter + _screenOffset * screenScaleRatio;
 
-            var newAnchoredPos = offsetPos / CachedCanvas.scaleFactor;
+            var newAnchoredPos = offsetPos / cachedCanvas.scaleFactor;
 
-            if (CachedRectTransform.anchoredPosition != newAnchoredPos)
+            if (cachedRectTransform.anchoredPosition != newAnchoredPos)
             {
-                CachedRectTransform.anchoredPosition = newAnchoredPos;
+                cachedRectTransform.anchoredPosition = newAnchoredPos;
             }
         }
 
         private Vector2 GetScreenCenter()
         {
-            if (CachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            if (cachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
             {
-                return CachedCanvas.pixelRect.size / 2f;
+                return cachedCanvas.pixelRect.size / 2f;
             }
-            return CachedCanvas.GetComponent<RectTransform>().sizeDelta / 2f;
+            return cachedCanvas.GetComponent<RectTransform>().sizeDelta / 2f;
         }
     }
 }

@@ -23,19 +23,19 @@ namespace Ux.Kit
         private Vector2 _screenPoint;
         private Vector2 _screenCenter;
 
-        public Vector2 ScreenScaleRatio => new Vector2(Screen.width / 1920f, Screen.height / 1080f);
+        public static Vector2 screenScaleRatio => new Vector2(Screen.width / 1920f, Screen.height / 1080f);
 
         private RectTransform _rectTransform;
-        private RectTransform CachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
+        private RectTransform cachedRectTransform => _rectTransform ??= GetComponent<RectTransform>();
 
         private Camera _camera;
-        private Camera CachedCamera => _camera ??= Camera.main;
+        private Camera cachedCamera => _camera ??= Camera.main;
 
         private Canvas _canvas;
-        private Canvas CachedCanvas => _canvas ??= GetComponentInParent<Canvas>();
+        private Canvas cachedCanvas => _canvas ??= GetComponentInParent<Canvas>();
 
         private CanvasGroup _canvasGroup;
-        private CanvasGroup CachedCanvasGroup => _canvasGroup ??= GetComponent<CanvasGroup>();
+        private CanvasGroup cachedCanvasGroup => _canvasGroup ??= GetComponent<CanvasGroup>();
 
         public void SetTarget(Transform target)
         {
@@ -74,11 +74,11 @@ namespace Ux.Kit
 
         public Vector2 GetScreenCenter()
         {
-            if (CachedCanvas == null)
+            if (cachedCanvas == null)
             {
                 return new Vector2(Screen.width / 2f, Screen.height / 2f);
             }
-            return CachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? CachedCanvas.pixelRect.size / 2 : CachedCanvas.GetComponent<RectTransform>().sizeDelta / 2;
+            return cachedCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? cachedCanvas.pixelRect.size / 2 : cachedCanvas.GetComponent<RectTransform>().sizeDelta / 2;
         }
 
         private void Start()
@@ -86,9 +86,9 @@ namespace Ux.Kit
             _track3DPos = Vector3.zero;
             Track();
 
-            if (CachedCanvasGroup)
+            if (cachedCanvasGroup)
             {
-                _storedAlpha = CachedCanvasGroup.alpha;
+                _storedAlpha = cachedCanvasGroup.alpha;
                 return;
             }
             _shouldBeOccluded = false;
@@ -102,9 +102,9 @@ namespace Ux.Kit
 
         private void Track()
         {
-            CachedRectTransform.pivot = _pivot;
+            cachedRectTransform.pivot = _pivot;
 
-            if (_trackTarget == null || CachedCamera == null)
+            if (_trackTarget == null || cachedCamera == null)
             {
                 return;
             }
@@ -112,21 +112,21 @@ namespace Ux.Kit
             _screenPoint = GetScreenPoint();
             _screenCenter = GetScreenCenter();
 
-            var newPosition = (_screenPoint - _screenCenter) / CachedCanvas.scaleFactor;
+            var newPosition = (_screenPoint - _screenCenter) / cachedCanvas.scaleFactor;
 
-            if (CachedRectTransform.anchoredPosition != newPosition)
+            if (cachedRectTransform.anchoredPosition != newPosition)
             {
-                CachedRectTransform.anchoredPosition = newPosition;
+                cachedRectTransform.anchoredPosition = newPosition;
             }
-            CachedRectTransform.anchoredPosition = (_screenPoint - _screenCenter) / CachedCanvas.scaleFactor;
+            cachedRectTransform.anchoredPosition = (_screenPoint - _screenCenter) / cachedCanvas.scaleFactor;
         }
 
         private void Occluding()
         {
             if (_shouldBeOccluded)
             {
-                var occluded = LsCameraHelper.IsOccluded(CachedCamera, _trackTarget.position);
-                CachedCanvasGroup.alpha = occluded ? _occludedAlpha : _storedAlpha;
+                var occluded = LsCameraHelper.IsOccluded(cachedCamera, _trackTarget.position);
+                cachedCanvasGroup.alpha = occluded ? _occludedAlpha : _storedAlpha;
             }
         }
 
@@ -134,8 +134,8 @@ namespace Ux.Kit
         {
             _track3DPos = _trackTarget.position;
             _targetPos = _track3DPos + _worldOffset;
-            var screenPoint = _snapToEdge ? LsCameraHelper.ClipWorldToScreenPoint(CachedCamera, _targetPos) : LsCameraHelper.WorldToScreenPoint(CachedCamera, _targetPos);
-            screenPoint += _screenOffset * ScreenScaleRatio;
+            var screenPoint = _snapToEdge ? LsCameraHelper.ClipWorldToScreenPoint(cachedCamera, _targetPos) : LsCameraHelper.WorldToScreenPoint(cachedCamera, _targetPos);
+            screenPoint += _screenOffset * screenScaleRatio;
             return screenPoint;
         }
     }
