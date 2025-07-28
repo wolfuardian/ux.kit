@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public class LsMaterialOverrider : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public class LsEventDispatcher : MonoBehaviour
     {

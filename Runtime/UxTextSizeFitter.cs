@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     [AddComponentMenu("UX/Kit/UX Text Size Fitter")]
     [RequireComponent(typeof(RectTransform), typeof(Text))]

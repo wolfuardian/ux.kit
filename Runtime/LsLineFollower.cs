@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public class LsLineFollower : MonoBehaviour
     {

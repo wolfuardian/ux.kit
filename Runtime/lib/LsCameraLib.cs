@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public static class LsCameraHelper
     {

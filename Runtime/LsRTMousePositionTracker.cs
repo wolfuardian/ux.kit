@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]

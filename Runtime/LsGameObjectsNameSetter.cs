@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public class LsGameObjectsNameSetter : MonoBehaviour
     {

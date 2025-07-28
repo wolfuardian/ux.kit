@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public class LsCameraController : MonoBehaviour
     {

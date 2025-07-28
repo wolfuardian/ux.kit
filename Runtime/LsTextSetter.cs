@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Eos.Ux.Kit
+namespace Ux.Kit
 {
     public class LsTextSetter : MonoBehaviour
     {
