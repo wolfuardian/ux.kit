@@ -1,0 +1,18 @@
+{
+    "name": "Ux.Kit.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b9b4fef2fc425844aa7c8c59974a2f0d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
