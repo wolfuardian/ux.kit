@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Text Size Fitter")]
+    [AddComponentMenu("UX Kit/UX Text Size Fitter")]
     [RequireComponent(typeof(RectTransform), typeof(Text))]
     [DisallowMultipleComponent]
     public class UxTextSizeFitter : MonoBehaviour

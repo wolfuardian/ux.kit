@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX GameObject Switcher Int")]
+    [AddComponentMenu("UX Kit/UX GameObject Switcher Int")]
     public class UxGameObjectSwitcherInt : MonoBehaviour
     {
         [SerializeField] private int _switchInt = 0;

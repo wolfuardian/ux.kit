@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX GameObject Name Setter")]
+    [AddComponentMenu("UX Kit/UX GameObject Name Setter")]
     public class UxGameObjectNameSetter : MonoBehaviour
     {
         [SerializeField] private GameObject _targetGameObject;

@@ -2,7 +2,7 @@
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Rect 3D Tracker")]
+    [AddComponentMenu("UX Kit/UX Rect 3D Tracker")]
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
     [DisallowMultipleComponent]
     public class UxRect3DTracker : MonoBehaviour

@@ -2,7 +2,7 @@
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Camera Controller")]
+    [AddComponentMenu("UX Kit/UX Camera Controller")]
     public class UxCameraController : MonoBehaviour
     {
         [SerializeField] private Camera _camera;

@@ -2,7 +2,7 @@
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Rect Mouse Tracker")]
+    [AddComponentMenu("UX Kit/UX Rect Mouse Tracker")]
     [RequireComponent(typeof(RectTransform))]
     [DisallowMultipleComponent]
     public class UxRectMouseTracker : MonoBehaviour

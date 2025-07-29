@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Line Follower")]
+    [AddComponentMenu("UX Kit/UX Line Follower")]
     public class UxLineFollower : MonoBehaviour
     {
         public enum MoveMode { Once, Loop, PingPong }

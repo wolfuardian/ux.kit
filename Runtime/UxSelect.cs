@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX/Kit/UX Select")]
+    [AddComponentMenu("UX Kit/UX Select")]
     public class UxSelect : MonoBehaviour
     {
         [SerializeField] private bool _isOn = false;
