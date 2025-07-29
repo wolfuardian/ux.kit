@@ -31,7 +31,7 @@ namespace Ux.Kit
             #if UNITY_2022_1_OR_NEWER
             var dispatchers = FindObjectsByType<UxEventDispatcher>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             #else
-            var dispatchers = FindObjectsOfType<LsEventDispatcher>(true);
+            var dispatchers = FindObjectsOfType<UxEventDispatcher>(true);
             #endif
             foreach (var d in dispatchers)
             {
