@@ -6,7 +6,7 @@ namespace Eos.Ux.Kit.Editor
 {
     public static class UxKitMenu
     {
-        [MenuItem("GameObject/Eos Collection/UX Kit/DrawCircle", false, 3)]
+        [MenuItem("GameObject/Eos/UX Kit/DrawCircle", false, 3)]
         public static void CreateLeanPointOfViewHierarchy()
         {
             var drawGo = new GameObject("new DrawCircle");
