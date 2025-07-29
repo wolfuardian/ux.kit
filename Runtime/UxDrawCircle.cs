@@ -39,7 +39,6 @@ namespace Ux.Kit
             {
                 return;
             }
-            ClampValues();
             Draw();
         }
 
