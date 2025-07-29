@@ -9,7 +9,7 @@ namespace Ux.Kit
 {
     public static class UxScreenshotTaker
     {
-        [MenuItem("Ux Kit/Utils/TakeScreenshots")]
+        [MenuItem("UX Kit/Utils/TakeScreenshots")]
         public static void MenuItem_TakeScreenshots()
         {
             var gameViewType = System.Type.GetType("UnityEditor.GameView, UnityEditor");
