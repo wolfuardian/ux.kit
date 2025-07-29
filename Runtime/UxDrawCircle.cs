@@ -39,51 +39,51 @@ namespace Ux.Kit
             {
                 return;
             }
-            SetupLineRenderer();
+            ClampValues();
             Draw();
         }
+
         #endif
 
         private void Start()
         {
-            SetupLineRenderer();
             Draw();
         }
 
         private void UpdateRadius(float newRadius)
         {
-            if (newRadius < 0.01f) newRadius = 0.01f;
-            if (Mathf.Approximately(_radius, newRadius)) return;
             _radius = newRadius;
             Draw();
         }
 
         private void UpdateLineWidth(float newLineWidth)
         {
-            if (newLineWidth < 0.01f) newLineWidth = 0.01f;
-            if (Mathf.Approximately(_lineWidth, newLineWidth)) return;
             _lineWidth = newLineWidth;
-            SetupLineRenderer();
+            Draw();
         }
 
         private void UpdateSegments(int newSegments)
         {
-            if (newSegments < 3) newSegments = 3;
-            if (_segments == newSegments) return;
             _segments = newSegments;
             Draw();
         }
 
-        private void SetupLineRenderer()
+        private void ClampValues()
         {
-            cachedLineRenderer.positionCount = _segments + 1;
-            cachedLineRenderer.startWidth = _lineWidth;
-            cachedLineRenderer.endWidth = _lineWidth;
-            cachedLineRenderer.useWorldSpace = false;
+            _segments = Mathf.Max(3, _segments);
+            _radius = Mathf.Max(0.01f, _radius);
+            _lineWidth = Mathf.Max(0.01f, _lineWidth);
         }
 
         private void Draw()
         {
+            ClampValues();
+
+            cachedLineRenderer.positionCount = _segments + 1;
+            cachedLineRenderer.startWidth = _lineWidth;
+            cachedLineRenderer.endWidth = _lineWidth;
+            cachedLineRenderer.useWorldSpace = false;
+
             for (var i = 0; i <= _segments; i++)
             {
                 var angle = i * 2 * Mathf.PI / _segments;
