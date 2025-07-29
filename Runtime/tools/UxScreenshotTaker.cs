@@ -24,15 +24,15 @@ namespace Ux.Kit
                 return;
             }
 
-            const int width             = 1024;
-            const int height            = 768;
-            const int gameViewBarHeight = 17;
+            const int WIDTH                = 1024;
+            const int HEIGHT               = 768;
+            const int GAME_VIEW_BAR_HEIGHT = 17;
 
             var rect = gameView.position;
             rect.x = 0;
             rect.y = 0;
-            rect.width = width;
-            rect.height = height + gameViewBarHeight;
+            rect.width = WIDTH;
+            rect.height = HEIGHT + GAME_VIEW_BAR_HEIGHT;
             gameView.position = rect;
 
             var fileName   = "screenshot_" + System.DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".png";
