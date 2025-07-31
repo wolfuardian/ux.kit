@@ -7,8 +7,8 @@ namespace Ux.Kit
     [AddComponentMenu("UX Kit/UX Move Along Curve")]
     public class UxMoveAlongCurve : MonoBehaviour
     {
-        public enum MoveMode { Once, Loop, PingPong }
-
+        private enum MoveMode { Once, Loop, PingPong }
+        
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private float _duration = 5f;
         [SerializeField] private MoveMode _mode = MoveMode.Loop;
