@@ -29,8 +29,6 @@ namespace Ux.Kit
 
         private void Update()
         {
-            if (_totalLength == 0) return;
-
             var speed = 1f / _duration;
             _t += speed * Time.deltaTime * (_movingForward ? 1 : -1);
 
