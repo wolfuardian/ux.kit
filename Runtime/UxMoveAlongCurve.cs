@@ -57,6 +57,7 @@ namespace Ux.Kit
             var lr          = _lineRenderer;
             var localOffset = lr.useWorldSpace ? Vector3.zero : lr.transform.position;
             transform.position = GetPositionAlongLine(lr, _t, GetTotalLength(lr)) + localOffset;
+            transform.eulerAngles = Quaternion.LookRotation(GetTangentAt(lr, _t), Vector3.up).eulerAngles;
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
