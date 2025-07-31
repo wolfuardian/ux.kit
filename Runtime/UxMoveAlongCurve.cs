@@ -86,17 +86,13 @@ namespace Ux.Kit
                 if (distance <= segmentLength)
                 {
                     position = Vector3.Lerp(lr.GetPosition(i), lr.GetPosition(i + 1), distance / segmentLength);
-                    position.x *= lr.transform.lossyScale.x;
-                    position.y *= lr.transform.lossyScale.y;
-                    position.z *= lr.transform.lossyScale.z;
+                    position.Scale(lr.transform.lossyScale);
                     return position;
                 }
                 distance -= segmentLength;
             }
             position = lr.GetPosition(lr.positionCount - 1);
-            position.x *= lr.transform.lossyScale.x;
-            position.y *= lr.transform.lossyScale.y;
-            position.z *= lr.transform.lossyScale.z;
+            position.Scale(lr.transform.lossyScale);
             return position;
         }
     }
