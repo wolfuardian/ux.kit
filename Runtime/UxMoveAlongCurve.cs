@@ -63,7 +63,7 @@ namespace Ux.Kit
             _onPositionChanged?.Invoke(scaledT);
         }
 
-        private float GetTotalLength(LineRenderer line)
+        private static float GetTotalLength(LineRenderer line)
         {
             var totalLength   = 0f;
             var positionCount = line.positionCount;
@@ -74,7 +74,7 @@ namespace Ux.Kit
             return totalLength;
         }
 
-        private Vector3 GetPositionAlongLine(LineRenderer line, float t, float totalLength)
+        private static Vector3 GetPositionAlongLine(LineRenderer line, float t, float totalLength)
         {
             Vector3 position;
             var     targetLength = t * totalLength;
