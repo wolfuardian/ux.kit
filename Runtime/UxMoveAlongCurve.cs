@@ -54,14 +54,21 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
-            var lr          = _lineRenderer;
-            var localOffset = lr.useWorldSpace ? Vector3.zero : lr.transform.position;
-            transform.position = GetPositionAlongLine(lr, _t, GetTotalLength(lr)) + localOffset;
+            var lr = _lineRenderer;
+            // transform.position = GetWorldPosition(lr, GetPositionAlongLine(lr, _t, GetTotalLength(lr)));
+            // transform.position = GetPositionAlongLine(lr, _t, GetTotalLength(lr)) + localOffset;
+            var localPoint = GetPositionAlongLine(lr, _t, GetTotalLength(lr));
+            transform.position = GetWorldPosition(lr, localPoint);
             transform.eulerAngles = Quaternion.LookRotation(GetTangentAt(lr, _t), Vector3.up).eulerAngles;
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
             _onPositionChanged?.Invoke(scaledT);
+        }
+
+        private static Vector3 GetWorldPosition(LineRenderer lr, Vector3 point)
+        {
+            return lr.useWorldSpace ? point : lr.transform.TransformPoint(point);
         }
 
         private static float GetTotalLength(LineRenderer line)
@@ -87,13 +94,13 @@ namespace Ux.Kit
                 if (targetLength <= segmentLength)
                 {
                     position = Vector3.Lerp(line.GetPosition(i), line.GetPosition(i + 1), targetLength / segmentLength);
-                    position.Scale(lossyScale);
+                    // position.Scale(lossyScale);
                     return position;
                 }
                 targetLength -= segmentLength;
             }
             position = line.GetPosition(positionCount - 1);
-            position.Scale(lossyScale);
+            // position.Scale(lossyScale);
             return position;
         }
 
