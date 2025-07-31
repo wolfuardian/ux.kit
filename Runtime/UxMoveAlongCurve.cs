@@ -55,8 +55,6 @@ namespace Ux.Kit
             }
 
             var lr = _lineRenderer;
-            // transform.position = GetWorldPosition(lr, GetPositionAlongLine(lr, _t, GetTotalLength(lr)));
-            // transform.position = GetPositionAlongLine(lr, _t, GetTotalLength(lr)) + localOffset;
             var localPoint = GetPositionAlongLine(lr, _t, GetTotalLength(lr));
             transform.position = GetWorldPosition(lr, localPoint);
             transform.eulerAngles = Quaternion.LookRotation(GetTangentAt(lr, _t), Vector3.up).eulerAngles;
@@ -86,7 +84,6 @@ namespace Ux.Kit
         {
             Vector3 position;
             var     positionCount = line.positionCount;
-            var     lossyScale    = line.transform.lossyScale;
             var     targetLength  = t * totalLength;
             for (var i = 0; i < positionCount - 1; i++)
             {
@@ -94,13 +91,11 @@ namespace Ux.Kit
                 if (targetLength <= segmentLength)
                 {
                     position = Vector3.Lerp(line.GetPosition(i), line.GetPosition(i + 1), targetLength / segmentLength);
-                    // position.Scale(lossyScale);
                     return position;
                 }
                 targetLength -= segmentLength;
             }
             position = line.GetPosition(positionCount - 1);
-            // position.Scale(lossyScale);
             return position;
         }
 
@@ -112,7 +107,6 @@ namespace Ux.Kit
             var totalLength    = 0f;
             var segmentLengths = new float[pointCount - 1];
 
-            // 1. 計算每段長度與總長度
             for (var i = 0; i < pointCount - 1; i++)
             {
                 var len = Vector3.Distance(line.GetPosition(i), line.GetPosition(i + 1));
@@ -120,7 +114,6 @@ namespace Ux.Kit
                 totalLength += len;
             }
 
-            // 2. 計算 t 所在段落
             var targetLength = t * totalLength;
             var accumulated  = 0f;
             for (var i = 0; i < segmentLengths.Length; i++)
@@ -128,8 +121,6 @@ namespace Ux.Kit
                 var segLen = segmentLengths[i];
                 if (accumulated + segLen >= targetLength)
                 {
-                    // 3. 線性插值
-                    var localT  = (targetLength - accumulated) / segLen;
                     var p0      = line.GetPosition(i);
                     var p1      = line.GetPosition(i + 1);
                     var tangent = (p1 - p0).normalized;
@@ -137,8 +128,6 @@ namespace Ux.Kit
                 }
                 accumulated += segLen;
             }
-
-            // 預設回傳最後一段的 tangent
             return (line.GetPosition(pointCount - 1) - line.GetPosition(pointCount - 2)).normalized;
         }
     }
