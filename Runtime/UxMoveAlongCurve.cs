@@ -96,7 +96,7 @@ namespace Ux.Kit
             return position;
         }
 
-        Vector3 GetTangentAt(LineRenderer line, float t)
+        private Vector3 GetTangentAt(LineRenderer line, float t)
         {
             var pointCount = line.positionCount;
             if (pointCount < 2) return Vector3.zero;
