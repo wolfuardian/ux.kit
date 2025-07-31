@@ -17,12 +17,10 @@ namespace Ux.Kit
 
         private float _t = 0f;
         private bool _movingForward = true;
-        private float _totalLength = 0f;
         private Vector3 _cachedLocalScale = Vector3.one;
 
         private void Start()
         {
-            CalculateTotalLength();
             _cachedLocalScale = transform.localScale;
             transform.position = _lineRenderer.GetPosition(0);
         }
@@ -56,21 +54,25 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
+            var totalLength = GetTotalLength(_lineRenderer);
+
             var goOffset = _lineRenderer.useWorldSpace ? Vector3.zero : _lineRenderer.transform.position;
-            transform.position = GetPositionAlongLine(_lineRenderer, _t * _totalLength) + goOffset;
+            transform.position = GetPositionAlongLine(_lineRenderer, _t * totalLength) + goOffset;
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
             _onPositionChanged?.Invoke(scaledT);
         }
 
-        private void CalculateTotalLength()
+        private float GetTotalLength(LineRenderer line)
         {
-            _totalLength = 0f;
-            for (var i = 0; i < _lineRenderer.positionCount - 1; i++)
+            var totalLength   = 0f;
+            var positionCount = line.positionCount;
+            for (var i = 0; i < positionCount - 1; i++)
             {
-                _totalLength += Vector3.Distance(_lineRenderer.GetPosition(i), _lineRenderer.GetPosition(i + 1));
+                totalLength += Vector3.Distance(line.GetPosition(i), line.GetPosition(i + 1));
             }
+            return totalLength;
         }
 
         private Vector3 GetPositionAlongLine(LineRenderer line, float distance)
