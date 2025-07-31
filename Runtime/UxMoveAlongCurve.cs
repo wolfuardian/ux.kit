@@ -59,7 +59,7 @@ namespace Ux.Kit
             }
 
             var goOffset = _lineRenderer.useWorldSpace ? Vector3.zero : _lineRenderer.transform.position;
-            transform.position = GetPositionAlongLine(_t * _totalLength) + goOffset;
+            transform.position = GetPositionAlongLine(_lineRenderer, _t * _totalLength) + goOffset;
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
@@ -75,24 +75,22 @@ namespace Ux.Kit
             }
         }
 
-        private Vector3 GetPositionAlongLine(float distance)
+        private Vector3 GetPositionAlongLine(LineRenderer line, float distance)
         {
             Vector3 position;
-
-            var lr = _lineRenderer;
-            for (var i = 0; i < lr.positionCount - 1; i++)
+            for (var i = 0; i < line.positionCount - 1; i++)
             {
-                var segmentLength = Vector3.Distance(lr.GetPosition(i), lr.GetPosition(i + 1));
+                var segmentLength = Vector3.Distance(line.GetPosition(i), line.GetPosition(i + 1));
                 if (distance <= segmentLength)
                 {
-                    position = Vector3.Lerp(lr.GetPosition(i), lr.GetPosition(i + 1), distance / segmentLength);
-                    position.Scale(lr.transform.lossyScale);
+                    position = Vector3.Lerp(line.GetPosition(i), line.GetPosition(i + 1), distance / segmentLength);
+                    position.Scale(line.transform.lossyScale);
                     return position;
                 }
                 distance -= segmentLength;
             }
-            position = lr.GetPosition(lr.positionCount - 1);
-            position.Scale(lr.transform.lossyScale);
+            position = line.GetPosition(line.positionCount - 1);
+            position.Scale(line.transform.lossyScale);
             return position;
         }
     }
