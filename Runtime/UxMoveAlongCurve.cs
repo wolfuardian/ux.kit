@@ -54,10 +54,9 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
-            var totalLength = GetTotalLength(_lineRenderer);
-
-            var goOffset = _lineRenderer.useWorldSpace ? Vector3.zero : _lineRenderer.transform.position;
-            transform.position = GetPositionAlongLine(_lineRenderer, _t, totalLength) + goOffset;
+            var lr          = _lineRenderer;
+            var localOffset = lr.useWorldSpace ? Vector3.zero : lr.transform.position;
+            transform.position = GetPositionAlongLine(lr, _t, GetTotalLength(lr)) + localOffset;
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
