@@ -8,10 +8,12 @@ namespace Ux.Kit
     public class UxMoveAlongCurve : MonoBehaviour
     {
         private enum MoveMode { Once, Loop, PingPong }
-        
+        private enum AxisUp { X, Y, Z }
+
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private float _duration = 5f;
         [SerializeField] private MoveMode _mode = MoveMode.Loop;
+        [SerializeField] private AxisUp _axisUp = AxisUp.Z;
         [SerializeField] private AnimationCurve _scaleCurve = AnimationCurve.Linear(0, 1, 1, 1);
         [SerializeField] private UnityEvent<float> _onPositionChanged;
 
@@ -54,10 +56,12 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
-            var lr = _lineRenderer;
+            var lr         = _lineRenderer;
             var localPoint = GetPositionAlongLine(lr, _t, GetTotalLength(lr));
+            var tangent    = GetTangentAt(lr, _t);
+            var rotation   = Quaternion.LookRotation(tangent, Vector3.up);
             transform.position = GetWorldPosition(lr, localPoint);
-            transform.eulerAngles = Quaternion.LookRotation(GetTangentAt(lr, _t), Vector3.up).eulerAngles;
+            transform.rotation = GetAlignedRotation(rotation, _axisUp);
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
@@ -129,6 +133,17 @@ namespace Ux.Kit
                 accumulated += segLen;
             }
             return (line.GetPosition(pointCount - 1) - line.GetPosition(pointCount - 2)).normalized;
+        }
+
+        private static Quaternion GetAlignedRotation(Quaternion rotation, AxisUp axisUp)
+        {
+            return axisUp switch
+            {
+                AxisUp.X => rotation * Quaternion.Euler(0, 0, 90),
+                AxisUp.Y => rotation,
+                AxisUp.Z => rotation * Quaternion.Euler(90, 0, 0),
+                _        => rotation
+            };
         }
     }
 }
