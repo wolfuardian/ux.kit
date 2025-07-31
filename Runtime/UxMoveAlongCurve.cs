@@ -57,7 +57,7 @@ namespace Ux.Kit
             var totalLength = GetTotalLength(_lineRenderer);
 
             var goOffset = _lineRenderer.useWorldSpace ? Vector3.zero : _lineRenderer.transform.position;
-            transform.position = GetPositionAlongLine(_lineRenderer, _t * totalLength) + goOffset;
+            transform.position = GetPositionAlongLine(_lineRenderer, _t, totalLength) + goOffset;
 
             var scaledT = _scaleCurve.Evaluate(_t);
             transform.localScale = _cachedLocalScale * scaledT;
@@ -75,19 +75,20 @@ namespace Ux.Kit
             return totalLength;
         }
 
-        private Vector3 GetPositionAlongLine(LineRenderer line, float distance)
+        private Vector3 GetPositionAlongLine(LineRenderer line, float t, float totalLength)
         {
             Vector3 position;
+            var     targetLength = t * totalLength;
             for (var i = 0; i < line.positionCount - 1; i++)
             {
                 var segmentLength = Vector3.Distance(line.GetPosition(i), line.GetPosition(i + 1));
-                if (distance <= segmentLength)
+                if (targetLength <= segmentLength)
                 {
-                    position = Vector3.Lerp(line.GetPosition(i), line.GetPosition(i + 1), distance / segmentLength);
+                    position = Vector3.Lerp(line.GetPosition(i), line.GetPosition(i + 1), targetLength / segmentLength);
                     position.Scale(line.transform.lossyScale);
                     return position;
                 }
-                distance -= segmentLength;
+                targetLength -= segmentLength;
             }
             position = line.GetPosition(line.positionCount - 1);
             position.Scale(line.transform.lossyScale);
