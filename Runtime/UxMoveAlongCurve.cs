@@ -77,20 +77,22 @@ namespace Ux.Kit
         private static Vector3 GetPositionAlongLine(LineRenderer line, float t, float totalLength)
         {
             Vector3 position;
-            var     targetLength = t * totalLength;
-            for (var i = 0; i < line.positionCount - 1; i++)
+            var     positionCount = line.positionCount;
+            var     lossyScale    = line.transform.lossyScale;
+            var     targetLength  = t * totalLength;
+            for (var i = 0; i < positionCount - 1; i++)
             {
                 var segmentLength = Vector3.Distance(line.GetPosition(i), line.GetPosition(i + 1));
                 if (targetLength <= segmentLength)
                 {
                     position = Vector3.Lerp(line.GetPosition(i), line.GetPosition(i + 1), targetLength / segmentLength);
-                    position.Scale(line.transform.lossyScale);
+                    position.Scale(lossyScale);
                     return position;
                 }
                 targetLength -= segmentLength;
             }
-            position = line.GetPosition(line.positionCount - 1);
-            position.Scale(line.transform.lossyScale);
+            position = line.GetPosition(positionCount - 1);
+            position.Scale(lossyScale);
             return position;
         }
     }
