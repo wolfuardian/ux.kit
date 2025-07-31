@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 namespace Ux.Kit
 {
-    [AddComponentMenu("UX Kit/UX Line Follower")]
-    public class UxLineFollower : MonoBehaviour
+    [AddComponentMenu("UX Kit/UX Move Along Curve")]
+    public class UxMoveAlongCurve : MonoBehaviour
     {
         public enum MoveMode { Once, Loop, PingPong }
 

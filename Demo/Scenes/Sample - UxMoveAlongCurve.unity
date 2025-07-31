@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 263271697}
   - component: {fileID: 263271696}
   m_Layer: 0
-  m_Name: Cube - EaseInEaseOut
+  m_Name: C_EaseInEaseOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 311946284}
   - component: {fileID: 311946283}
   m_Layer: 0
-  m_Name: Cube - UnityEvent<float>
+  m_Name: C_UnityEvent<float>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 452763005}
   - component: {fileID: 452763004}
   m_Layer: 0
-  m_Name: Cube - None
+  m_Name: C_None
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 484692655}
   - component: {fileID: 484692654}
   m_Layer: 0
-  m_Name: LineRenderer - Linear
+  m_Name: LR_Linear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 754707830}
   - component: {fileID: 754707829}
   m_Layer: 0
-  m_Name: Cube - Linear
+  m_Name: C_Linear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,7 +1516,7 @@ GameObject:
   - component: {fileID: 816045958}
   - component: {fileID: 816045957}
   m_Layer: 0
-  m_Name: LineRenderer - EaseInEaseOut
+  m_Name: LR_EaseInEaseOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,7 +1655,7 @@ GameObject:
   - component: {fileID: 822910758}
   - component: {fileID: 822910757}
   m_Layer: 0
-  m_Name: LineRenderer - PingPong
+  m_Name: LR_PingPong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1796,7 +1796,7 @@ GameObject:
   - component: {fileID: 881667680}
   - component: {fileID: 881667679}
   m_Layer: 0
-  m_Name: LineRenderer - None
+  m_Name: LR_None
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1935,7 +1935,7 @@ GameObject:
   - component: {fileID: 891208100}
   - component: {fileID: 891208099}
   m_Layer: 0
-  m_Name: LineRenderer - UnityEvent<float>
+  m_Name: LR_UnityEvent<float>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2479,7 +2479,7 @@ GameObject:
   - component: {fileID: 1318020060}
   - component: {fileID: 1318020057}
   m_Layer: 0
-  m_Name: Cube - Loop
+  m_Name: C_Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2724,7 @@ GameObject:
   - component: {fileID: 1586705691}
   - component: {fileID: 1586705690}
   m_Layer: 0
-  m_Name: Cube - PingPong
+  m_Name: C_PingPong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3079,7 +3079,7 @@ GameObject:
   - component: {fileID: 1808804079}
   - component: {fileID: 1808804078}
   m_Layer: 0
-  m_Name: Cube - Once
+  m_Name: C_Once
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3311,7 +3311,7 @@ GameObject:
   - component: {fileID: 2055404320}
   - component: {fileID: 2055404319}
   m_Layer: 0
-  m_Name: LineRenderer - Loop
+  m_Name: LR_Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3452,7 +3452,7 @@ GameObject:
   - component: {fileID: 2123062838}
   - component: {fileID: 2123062837}
   m_Layer: 0
-  m_Name: LineRenderer - Once
+  m_Name: LR_Once
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
