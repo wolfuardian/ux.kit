@@ -95,5 +95,43 @@ namespace Ux.Kit
             position.Scale(lossyScale);
             return position;
         }
+
+        Vector3 GetTangentAt(LineRenderer line, float t)
+        {
+            int pointCount = line.positionCount;
+            if (pointCount < 2) return Vector3.zero;
+
+            float   totalLength    = 0f;
+            float[] segmentLengths = new float[pointCount - 1];
+
+            // 1. 計算每段長度與總長度
+            for (int i = 0; i < pointCount - 1; i++)
+            {
+                float len = Vector3.Distance(line.GetPosition(i), line.GetPosition(i + 1));
+                segmentLengths[i] = len;
+                totalLength += len;
+            }
+
+            // 2. 計算 t 所在段落
+            float targetLength = t * totalLength;
+            float accumulated  = 0f;
+            for (int i = 0; i < segmentLengths.Length; i++)
+            {
+                float segLen = segmentLengths[i];
+                if (accumulated + segLen >= targetLength)
+                {
+                    // 3. 線性插值
+                    float   localT  = (targetLength - accumulated) / segLen;
+                    Vector3 p0      = line.GetPosition(i);
+                    Vector3 p1      = line.GetPosition(i + 1);
+                    Vector3 tangent = (p1 - p0).normalized;
+                    return tangent;
+                }
+                accumulated += segLen;
+            }
+
+            // 預設回傳最後一段的 tangent
+            return (line.GetPosition(pointCount - 1) - line.GetPosition(pointCount - 2)).normalized;
+        }
     }
 }
