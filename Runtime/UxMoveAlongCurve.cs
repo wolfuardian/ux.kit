@@ -9,7 +9,7 @@ namespace Ux.Kit
     {
         private enum SpeedType { Duration, Speed }
         private enum MoveMode { Once, Loop, PingPong }
-        private enum AxisUp { X, Y, Z }
+        private enum AxisUp { X, Y, Z, NegativeX, NegativeY, NegativeZ }
 
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private SpeedType _speedType = SpeedType.Duration;
@@ -149,10 +149,13 @@ namespace Ux.Kit
         {
             return axisUp switch
             {
-                AxisUp.X => rotation * Quaternion.Euler(0, 0, 90),
-                AxisUp.Y => rotation,
-                AxisUp.Z => rotation * Quaternion.Euler(90, 0, 0),
-                _        => rotation
+                AxisUp.X         => rotation * Quaternion.Euler(0, 0, 90),
+                AxisUp.Y         => rotation,
+                AxisUp.Z         => rotation * Quaternion.Euler(90, 0, 0),
+                AxisUp.NegativeX => rotation * Quaternion.Euler(0, 0, -90),
+                AxisUp.NegativeY => rotation * Quaternion.Euler(0, 180, 0),
+                AxisUp.NegativeZ => rotation * Quaternion.Euler(-90, 0, 0),
+                _                => rotation
             };
         }
     }
