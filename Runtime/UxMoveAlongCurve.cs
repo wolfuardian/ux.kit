@@ -12,17 +12,20 @@ namespace Ux.Kit
         private enum AxisUp { X, Y, Z, NegativeX, NegativeY, NegativeZ }
 
         [SerializeField] private LineRenderer _lineRenderer;
-        
+
         [Header("Speed Settings")]
-        [SerializeField] private SpeedType _speedType = SpeedType.Duration;
+        [SerializeField]
+        private SpeedType _speedType = SpeedType.Duration;
         [SerializeField] private float _duration = 5f;
         [SerializeField] private float _speed = 0.2f;
-        
+
         [Header("Movement Mode")]
-        [SerializeField] private MoveMode _mode = MoveMode.Loop;
-        
+        [SerializeField]
+        private MoveMode _mode = MoveMode.Loop;
+
         [Header("Orientation and Scale")]
-        [SerializeField] private AxisUp _axisUp = AxisUp.Z;
+        [SerializeField]
+        private AxisUp _axisUp = AxisUp.Z;
         [SerializeField] private AnimationCurve _scaleCurve = AnimationCurve.Linear(0, 1, 1, 1);
 
         [Header("LineRenderer Event")]
