@@ -32,12 +32,17 @@ namespace Ux.Kit
 
         private void Update()
         {
+            var lr          = _lineRenderer;
+            var totalLength = GetTotalLength(lr);
+
+            // Speed calculate move how much absolute distance per second
             var speed = _speedType switch
             {
                 SpeedType.Duration => 1f / _duration,
-                SpeedType.Speed    => _speed,
+                SpeedType.Speed    => _speed / totalLength,
                 _                  => throw new ArgumentOutOfRangeException()
             };
+
             _t += speed * Time.deltaTime * (_movingForward ? 1 : -1);
 
             switch (_mode)
@@ -64,11 +69,9 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
-            var lr          = _lineRenderer;
-            var totalLength = GetTotalLength(lr);
-            var localPoint  = GetPositionAlongLine(lr, _t, totalLength);
-            var tangent     = GetTangentAt(lr, _t);
-            var rotation    = Quaternion.LookRotation(tangent, Vector3.up);
+            var localPoint = GetPositionAlongLine(lr, _t, totalLength);
+            var tangent    = GetTangentAt(lr, _t);
+            var rotation   = Quaternion.LookRotation(tangent, Vector3.up);
             transform.position = GetWorldPosition(lr, localPoint);
             transform.rotation = GetAlignedRotation(rotation, _axisUp);
 
