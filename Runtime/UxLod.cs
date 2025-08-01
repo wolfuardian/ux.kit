@@ -21,6 +21,10 @@ namespace Ux.Kit
 
         private void Update()
         {
+            if (cachedCamera == null)
+            {
+                return;
+            }
             _currentFov = cachedCamera.fieldOfView;
         }
 
