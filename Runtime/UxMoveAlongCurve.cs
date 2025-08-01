@@ -33,7 +33,7 @@ namespace Ux.Kit
         private UnityEvent<float> _onPositionChanged;
 
         private float _t = 0f;
-        private bool _movingForward = true;
+        private bool _movingForwardT = true;
         private Vector3 _cachedLocalScale = Vector3.one;
 
         private void Start()
@@ -53,7 +53,7 @@ namespace Ux.Kit
                 _                  => throw new ArgumentOutOfRangeException()
             };
 
-            _t += speed * Time.deltaTime * (_movingForward ? 1 : -1);
+            _t += speed * Time.deltaTime * (_movingForwardT ? 1 : -1);
 
             switch (_moveMode)
             {
@@ -71,7 +71,7 @@ namespace Ux.Kit
                 case MoveMode.PingPong:
                     if (_t is >= 1f or <= 0)
                     {
-                        _movingForward = !_movingForward;
+                        _movingForwardT = !_movingForwardT;
                         _t = Mathf.Clamp(_t, 0, 1f);
                     }
                     break;
