@@ -64,10 +64,11 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
-            var lr         = _lineRenderer;
-            var localPoint = GetPositionAlongLine(lr, _t, GetTotalLength(lr));
-            var tangent    = GetTangentAt(lr, _t);
-            var rotation   = Quaternion.LookRotation(tangent, Vector3.up);
+            var lr          = _lineRenderer;
+            var totalLength = GetTotalLength(lr);
+            var localPoint  = GetPositionAlongLine(lr, _t, totalLength);
+            var tangent     = GetTangentAt(lr, _t);
+            var rotation    = Quaternion.LookRotation(tangent, Vector3.up);
             transform.position = GetWorldPosition(lr, localPoint);
             transform.rotation = GetAlignedRotation(rotation, _axisUp);
 
