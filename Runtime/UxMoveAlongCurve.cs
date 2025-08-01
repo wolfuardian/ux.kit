@@ -28,12 +28,17 @@ namespace Ux.Kit
         private AxisUp _axisUp = AxisUp.Z;
         [SerializeField] private AnimationCurve _scaleCurve = AnimationCurve.Linear(0, 1, 1, 1);
 
+        [Header("Radar Effect")]
+        [SerializeField]
+        private float _tickInterval = 0.3f;
+
         [Header("LineRenderer Event")]
         [SerializeField]
         private UnityEvent<float> _onPositionChanged;
 
         private float _t = 0f;
         private bool _movingForwardT = true;
+        private float _timer = 0f;
         private Vector3 _cachedLocalScale = Vector3.one;
 
         private void Start()
@@ -42,7 +47,7 @@ namespace Ux.Kit
             transform.position = _lineRenderer.GetPosition(0);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             var lr          = _lineRenderer;
             var totalLength = GetTotalLength(lr);
@@ -52,9 +57,17 @@ namespace Ux.Kit
                 SpeedType.Speed    => _speed / totalLength,
                 _                  => throw new ArgumentOutOfRangeException()
             };
-
             _t += speed * Time.deltaTime * (_movingForwardT ? 1 : -1);
+            _timer += Time.deltaTime;
+            if (_timer > _tickInterval)
+            {
+                _timer = 0f;
+                UpdateMovement(lr, totalLength);
+            }
+        }
 
+        private void UpdateMovement(LineRenderer lr, float totalLength)
+        {
             switch (_moveMode)
             {
                 case MoveMode.Once:
