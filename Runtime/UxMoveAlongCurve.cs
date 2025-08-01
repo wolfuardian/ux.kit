@@ -30,7 +30,8 @@ namespace Ux.Kit
 
         [Header("Radar Effect")]
         [SerializeField]
-        private float _tickInterval = 0.3f;
+        private bool _enableRadarEffect = false;
+        [SerializeField] private float _tickInterval = 0.3f;
 
         [Header("LineRenderer Event")]
         [SerializeField]
@@ -58,10 +59,17 @@ namespace Ux.Kit
                 _                  => throw new ArgumentOutOfRangeException()
             };
             _t += speed * Time.deltaTime * (_movingForwardT ? 1 : -1);
-            _timer += Time.deltaTime;
-            if (_timer > _tickInterval)
+            if (_enableRadarEffect)
             {
-                _timer = 0f;
+                _timer += Time.deltaTime;
+                if (_timer > _tickInterval)
+                {
+                    _timer = 0f;
+                    UpdateMovement(line, totalLength);
+                }
+            }
+            else
+            {
                 UpdateMovement(line, totalLength);
             }
         }
