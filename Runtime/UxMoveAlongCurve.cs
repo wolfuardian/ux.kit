@@ -39,7 +39,7 @@ namespace Ux.Kit
 
         private float _t = 0f;
         private bool _movingForwardT = true;
-        private float _timer = 0f;
+        private float _timer = float.MaxValue;
         private Vector3 _cachedLocalScale = Vector3.one;
 
         private void Start()
