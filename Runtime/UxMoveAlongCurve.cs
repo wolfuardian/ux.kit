@@ -49,8 +49,8 @@ namespace Ux.Kit
 
         private void FixedUpdate()
         {
-            var lr          = _lineRenderer;
-            var totalLength = GetTotalLength(lr);
+            var line        = _lineRenderer;
+            var totalLength = GetTotalLength(line);
             var speed = _speedType switch
             {
                 SpeedType.Duration => 1f / _duration,
@@ -62,11 +62,11 @@ namespace Ux.Kit
             if (_timer > _tickInterval)
             {
                 _timer = 0f;
-                UpdateMovement(lr, totalLength);
+                UpdateMovement(line, totalLength);
             }
         }
 
-        private void UpdateMovement(LineRenderer lr, float totalLength)
+        private void UpdateMovement(LineRenderer line, float totalLength)
         {
             switch (_moveMode)
             {
@@ -92,10 +92,10 @@ namespace Ux.Kit
                     throw new ArgumentOutOfRangeException();
             }
 
-            var localPoint = GetPositionAlongLine(lr, _t, totalLength);
-            var tangent    = GetTangentAt(lr, _t);
+            var localPoint = GetPositionAlongLine(line, _t, totalLength);
+            var tangent    = GetTangentAt(line, _t);
             var rotation   = Quaternion.LookRotation(tangent, Vector3.up);
-            transform.position = GetWorldPosition(lr, localPoint);
+            transform.position = GetWorldPosition(line, localPoint);
             transform.rotation = GetAlignedRotation(rotation, _axisUp);
 
             var scaledT = _scaleCurve.Evaluate(_t);
@@ -103,9 +103,9 @@ namespace Ux.Kit
             _onPositionChanged?.Invoke(scaledT);
         }
 
-        private static Vector3 GetWorldPosition(LineRenderer lr, Vector3 point)
+        private static Vector3 GetWorldPosition(LineRenderer line, Vector3 point)
         {
-            return lr.useWorldSpace ? point : lr.transform.TransformPoint(point);
+            return line.useWorldSpace ? point : line.transform.TransformPoint(point);
         }
 
         private static float GetTotalLength(LineRenderer line)
