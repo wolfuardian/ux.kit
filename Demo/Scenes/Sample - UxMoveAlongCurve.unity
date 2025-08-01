@@ -403,7 +403,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 816045957}
+  _speedType: 0
   _duration: 1
+  _speed: 0.2
   _mode: 1
   _axisUp: 2
   _scaleCurve:
@@ -673,7 +675,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 891208099}
+  _speedType: 0
   _duration: 1
+  _speed: 0.2
   _mode: 1
   _axisUp: 2
   _scaleCurve:
@@ -942,7 +946,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 881667679}
+  _speedType: 0
   _duration: 1
+  _speed: 0.2
   _mode: 1
   _axisUp: 2
   _scaleCurve:
@@ -1439,7 +1445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 484692654}
+  _speedType: 0
   _duration: 1
+  _speed: 0.2
   _mode: 1
   _axisUp: 2
   _scaleCurve:
@@ -2908,7 +2916,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 2055404319}
+  _speedType: 0
   _duration: 2
+  _speed: 0.2
   _mode: 1
   _axisUp: 2
   _scaleCurve:
@@ -3154,7 +3164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 822910757}
+  _speedType: 0
   _duration: 1
+  _speed: 0.2
   _mode: 2
   _axisUp: 2
   _scaleCurve:
@@ -3511,7 +3523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 2123062837}
+  _speedType: 0
   _duration: 5
+  _speed: 0.2
   _mode: 0
   _axisUp: 2
   _scaleCurve:
@@ -3796,7 +3810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 1147825825}
+  _speedType: 1
   _duration: 10
+  _speed: 0.2
   _mode: 2
   _axisUp: 2
   _scaleCurve:
