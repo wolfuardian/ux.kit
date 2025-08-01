@@ -34,8 +34,6 @@ namespace Ux.Kit
         {
             var lr          = _lineRenderer;
             var totalLength = GetTotalLength(lr);
-
-            // Speed calculate move how much absolute distance per second
             var speed = _speedType switch
             {
                 SpeedType.Duration => 1f / _duration,
