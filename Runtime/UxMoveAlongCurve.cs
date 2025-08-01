@@ -21,7 +21,7 @@ namespace Ux.Kit
 
         [Header("Movement Mode")]
         [SerializeField]
-        private MoveMode _mode = MoveMode.Loop;
+        private MoveMode _moveMode = MoveMode.Loop;
 
         [Header("Orientation and Scale")]
         [SerializeField]
@@ -55,7 +55,7 @@ namespace Ux.Kit
 
             _t += speed * Time.deltaTime * (_movingForward ? 1 : -1);
 
-            switch (_mode)
+            switch (_moveMode)
             {
                 case MoveMode.Once:
                     if (_t >= 1f)
