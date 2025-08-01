@@ -7,11 +7,14 @@ namespace Ux.Kit
     [AddComponentMenu("UX Kit/UX Move Along Curve")]
     public class UxMoveAlongCurve : MonoBehaviour
     {
+        private enum SpeedType { Duration, Speed }
         private enum MoveMode { Once, Loop, PingPong }
         private enum AxisUp { X, Y, Z }
 
         [SerializeField] private LineRenderer _lineRenderer;
+        [SerializeField] private SpeedType _speedType = SpeedType.Duration;
         [SerializeField] private float _duration = 5f;
+        [SerializeField] private float _speed = 0.2f;
         [SerializeField] private MoveMode _mode = MoveMode.Loop;
         [SerializeField] private AxisUp _axisUp = AxisUp.Z;
         [SerializeField] private AnimationCurve _scaleCurve = AnimationCurve.Linear(0, 1, 1, 1);
@@ -29,7 +32,12 @@ namespace Ux.Kit
 
         private void Update()
         {
-            var speed = 1f / _duration;
+            var speed = _speedType switch
+            {
+                SpeedType.Duration => 1f / _duration,
+                SpeedType.Speed    => _speed,
+                _                  => throw new ArgumentOutOfRangeException()
+            };
             _t += speed * Time.deltaTime * (_movingForward ? 1 : -1);
 
             switch (_mode)
