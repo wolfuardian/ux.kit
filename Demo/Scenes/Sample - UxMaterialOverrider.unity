@@ -249,9 +249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _materialTarget: {fileID: 2100000, guid: 8d3917739fd436446b1014c7365eb05e, type: 2}
+  _overrideOnStart: 1
+  _overrideCustomRenderers: 0
   _settings:
-    _overrideOnStart: 1
-    _overrideCustomRenderers: 0
     _meshRenderers: []
     _lineRenderers: []
     _images: []
@@ -525,9 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _materialTarget: {fileID: 2100000, guid: 8d3917739fd436446b1014c7365eb05e, type: 2}
+  _overrideOnStart: 1
+  _overrideCustomRenderers: 0
   _settings:
-    _overrideOnStart: 1
-    _overrideCustomRenderers: 0
     _meshRenderers: []
     _lineRenderers: []
     _images: []
@@ -1174,9 +1174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _materialTarget: {fileID: 2100000, guid: 8d3917739fd436446b1014c7365eb05e, type: 2}
+  _overrideOnStart: 1
+  _overrideCustomRenderers: 0
   _settings:
-    _overrideOnStart: 1
-    _overrideCustomRenderers: 0
     _meshRenderers: []
     _lineRenderers: []
     _images: []
