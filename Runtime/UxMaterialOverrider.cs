@@ -8,6 +8,8 @@ namespace Ux.Kit
     public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
+        [SerializeField] private bool _overrideOnStart = false;
+        [SerializeField] private bool _overrideCustomRenderers = false;
 
         [SerializeField] private Settings _settings = new Settings();
 
@@ -35,7 +37,7 @@ namespace Ux.Kit
             _lineRendererData.Clear();
             _imageData.Clear();
 
-            var mrs = _settings._overrideCustomRenderers ? _settings._meshRenderers : GetComponentsInChildren<MeshRenderer>().ToList();
+            var mrs = _overrideCustomRenderers ? _settings._meshRenderers : GetComponentsInChildren<MeshRenderer>().ToList();
             mrs.ForEach(meshRenderer =>
             {
                 _meshRendererData.Add(new MeshRendererData
@@ -45,7 +47,7 @@ namespace Ux.Kit
                     _materialsInstance = meshRenderer.sharedMaterials
                 });
             });
-            var mls = _settings._overrideCustomRenderers ? _settings._lineRenderers : GetComponentsInChildren<LineRenderer>().ToList();
+            var mls = _overrideCustomRenderers ? _settings._lineRenderers : GetComponentsInChildren<LineRenderer>().ToList();
             mls.ForEach(lineRenderer =>
             {
                 _lineRendererData.Add(new LineRendererData
@@ -55,7 +57,7 @@ namespace Ux.Kit
                     _materialsInstance = lineRenderer.sharedMaterials
                 });
             });
-            var imageRenderers = _settings._overrideCustomRenderers ? _settings._images : GetComponentsInChildren<UnityEngine.UI.Image>().ToList();
+            var imageRenderers = _overrideCustomRenderers ? _settings._images : GetComponentsInChildren<UnityEngine.UI.Image>().ToList();
             imageRenderers.ForEach(imageRenderer =>
             {
                 _imageData.Add(new ImageRendererData
@@ -78,7 +80,7 @@ namespace Ux.Kit
 
         private void Start()
         {
-            if (_settings._overrideOnStart)
+            if (_overrideOnStart)
             {
                 OverrideMaterials();
             }
@@ -87,8 +89,6 @@ namespace Ux.Kit
         [System.Serializable]
         public class Settings
         {
-            public bool _overrideOnStart = false;
-            public bool _overrideCustomRenderers = false;
             public List<MeshRenderer> _meshRenderers = new List<MeshRenderer>();
             public List<LineRenderer> _lineRenderers = new List<LineRenderer>();
             public List<UnityEngine.UI.Image> _images = new List<UnityEngine.UI.Image>();
