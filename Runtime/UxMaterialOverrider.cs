@@ -8,9 +8,11 @@ namespace Ux.Kit
     public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
-        public List<MeshRenderer> _meshRenderers = new List<MeshRenderer>();
-        public List<LineRenderer> _lineRenderers = new List<LineRenderer>();
-        public List<UnityEngine.UI.Image> _images = new List<UnityEngine.UI.Image>();
+
+        [Header("Custom References")]
+        public List<MeshRenderer> _customMeshRenderers = new List<MeshRenderer>();
+        public List<LineRenderer> _customLineRenderers = new List<LineRenderer>();
+        public List<UnityEngine.UI.Image> _customImages = new List<UnityEngine.UI.Image>();
 
         private readonly List<MeshRendererData> _meshRendererData = new List<MeshRendererData>();
         private readonly List<LineRendererData> _lineRendererData = new List<LineRendererData>();
@@ -37,7 +39,7 @@ namespace Ux.Kit
             _imageData.Clear();
 
             var mrs = GetComponentsInChildren<MeshRenderer>().ToList()
-                .Concat(_meshRenderers)
+                .Concat(_customMeshRenderers)
                 .Distinct()
                 .ToList();
 
@@ -51,7 +53,7 @@ namespace Ux.Kit
                 });
             });
             var mls = GetComponentsInChildren<LineRenderer>().ToList()
-                .Concat(_lineRenderers)
+                .Concat(_customLineRenderers)
                 .Distinct()
                 .ToList();
             mls.ForEach(lineRenderer =>
@@ -64,7 +66,7 @@ namespace Ux.Kit
                 });
             });
             var imageRenderers = GetComponentsInChildren<UnityEngine.UI.Image>().ToList()
-                .Concat(_images)
+                .Concat(_customImages)
                 .Distinct()
                 .ToList();
             imageRenderers.ForEach(imageRenderer =>
