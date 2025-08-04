@@ -8,8 +8,9 @@ namespace Ux.Kit
     public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
-
-        [SerializeField] private Settings _settings = new Settings();
+        public List<MeshRenderer> _meshRenderers = new List<MeshRenderer>();
+        public List<LineRenderer> _lineRenderers = new List<LineRenderer>();
+        public List<UnityEngine.UI.Image> _images = new List<UnityEngine.UI.Image>();
 
         private readonly List<MeshRendererData> _meshRendererData = new List<MeshRendererData>();
         private readonly List<LineRendererData> _lineRendererData = new List<LineRendererData>();
@@ -36,7 +37,7 @@ namespace Ux.Kit
             _imageData.Clear();
 
             var mrs = GetComponentsInChildren<MeshRenderer>().ToList()
-                .Concat(_settings._meshRenderers)
+                .Concat(_meshRenderers)
                 .Distinct()
                 .ToList();
 
@@ -50,7 +51,7 @@ namespace Ux.Kit
                 });
             });
             var mls = GetComponentsInChildren<LineRenderer>().ToList()
-                .Concat(_settings._lineRenderers)
+                .Concat(_lineRenderers)
                 .Distinct()
                 .ToList();
             mls.ForEach(lineRenderer =>
@@ -63,7 +64,7 @@ namespace Ux.Kit
                 });
             });
             var imageRenderers = GetComponentsInChildren<UnityEngine.UI.Image>().ToList()
-                .Concat(_settings._images)
+                .Concat(_images)
                 .Distinct()
                 .ToList();
             imageRenderers.ForEach(imageRenderer =>
@@ -89,14 +90,6 @@ namespace Ux.Kit
         private void Start()
         {
             OverrideMaterials();
-        }
-
-        [System.Serializable]
-        public class Settings
-        {
-            public List<MeshRenderer> _meshRenderers = new List<MeshRenderer>();
-            public List<LineRenderer> _lineRenderers = new List<LineRenderer>();
-            public List<UnityEngine.UI.Image> _images = new List<UnityEngine.UI.Image>();
         }
 
         [System.Serializable]
