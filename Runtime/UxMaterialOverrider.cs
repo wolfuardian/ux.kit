@@ -8,7 +8,6 @@ namespace Ux.Kit
     public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
-        [SerializeField] private bool _overrideCustomRenderers = false;
 
         [SerializeField] private Settings _settings = new Settings();
 
@@ -36,7 +35,11 @@ namespace Ux.Kit
             _lineRendererData.Clear();
             _imageData.Clear();
 
-            var mrs = _overrideCustomRenderers ? _settings._meshRenderers : GetComponentsInChildren<MeshRenderer>().ToList();
+            var mrs = GetComponentsInChildren<MeshRenderer>().ToList()
+                .Concat(_settings._meshRenderers)
+                .Distinct()
+                .ToList();
+
             mrs.ForEach(meshRenderer =>
             {
                 _meshRendererData.Add(new MeshRendererData
@@ -46,7 +49,10 @@ namespace Ux.Kit
                     _materialsInstance = meshRenderer.sharedMaterials
                 });
             });
-            var mls = _overrideCustomRenderers ? _settings._lineRenderers : GetComponentsInChildren<LineRenderer>().ToList();
+            var mls = GetComponentsInChildren<LineRenderer>().ToList()
+                .Concat(_settings._lineRenderers)
+                .Distinct()
+                .ToList();
             mls.ForEach(lineRenderer =>
             {
                 _lineRendererData.Add(new LineRendererData
@@ -56,7 +62,10 @@ namespace Ux.Kit
                     _materialsInstance = lineRenderer.sharedMaterials
                 });
             });
-            var imageRenderers = _overrideCustomRenderers ? _settings._images : GetComponentsInChildren<UnityEngine.UI.Image>().ToList();
+            var imageRenderers = GetComponentsInChildren<UnityEngine.UI.Image>().ToList()
+                .Concat(_settings._images)
+                .Distinct()
+                .ToList();
             imageRenderers.ForEach(imageRenderer =>
             {
                 _imageData.Add(new ImageRendererData
