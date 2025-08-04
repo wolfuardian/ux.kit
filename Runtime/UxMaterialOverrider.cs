@@ -8,7 +8,6 @@ namespace Ux.Kit
     public class UxMaterialOverrider : MonoBehaviour
     {
         [SerializeField] private Material _materialTarget;
-        [SerializeField] private bool _overrideOnStart = false;
         [SerializeField] private bool _overrideCustomRenderers = false;
 
         [SerializeField] private Settings _settings = new Settings();
@@ -80,10 +79,7 @@ namespace Ux.Kit
 
         private void Start()
         {
-            if (_overrideOnStart)
-            {
-                OverrideMaterials();
-            }
+            OverrideMaterials();
         }
 
         [System.Serializable]
